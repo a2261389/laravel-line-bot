@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMerchantsTagsTable extends Migration
+class CreateMerchantTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMerchantsTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('merchants_tags', function (Blueprint $table) {
+        Schema::create('merchant_tags', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('merchant_id');
             $table->foreign('merchant_id')->references('id')->on('merchants');
