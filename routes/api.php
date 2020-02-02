@@ -14,5 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['namespace' => 'Api\v1', 'prefix' => 'v1', 'as' => 'api.v1.'], function () {
-    Route::get('get-line-bot-webhook', 'LineBotController@getWebHook')->name('get-line-bot-webhook');
+    Route::post('get-line-bot-webhook', 'LineBotController@getWebHook')->name('get-line-bot-webhook');
 });
