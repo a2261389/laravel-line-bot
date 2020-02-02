@@ -52,7 +52,7 @@ class LineBot
     public function getResponse()
     {
         if (!$this->request) {
-            throw new Exception('Need init before call function getResponse');
+            throw new Exception('Need init before call ' . __METHOD__);
         }
 
         switch ($this->mode) {
@@ -65,10 +65,24 @@ class LineBot
         }
     }
 
+    public function getUserId()
+    {
+        if (!$this->request) {
+            throw new Exception('Need init before call ' . __METHOD__);
+        }
+        $response = $this->getResponse();
+        if (count($response) > 0) {
+            if (isset($response[0]['source']['userId'])) {
+                return $response[0]['source']['userId'];
+            }
+        }
+        throw new Exception('Could not found user ID');
+    }
+
     public function getFirstText()
     {
         if (!$this->request) {
-            throw new Exception('Need init before call function getFirstText');
+            throw new Exception('Need init before call ' . __METHOD__);
         }
         $strings = $this->textEventWatcher($this->request);
         if (count($strings) > 0) {
@@ -82,7 +96,7 @@ class LineBot
     public function reply($message)
     {
         if (!$this->request) {
-            throw new Exception('Need init before call function reply');
+            throw new Exception('Need init before call ' . __METHOD__);
         }
         $responseData = $this->getResponse();
 
